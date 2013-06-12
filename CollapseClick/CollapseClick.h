@@ -41,6 +41,9 @@
 // Delegate
 @property (weak) id <CollapseClickDelegate> CollapseClickDelegate;
 
+// Configuration Properties
+@property (nonatomic) BOOL collapseOthers;
+
 // Properties
 @property (nonatomic, retain) NSMutableArray *isClickedArray;
 @property (nonatomic, retain) NSMutableArray *dataArray;

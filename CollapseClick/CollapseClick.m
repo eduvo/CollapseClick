@@ -8,7 +8,9 @@
 
 #import "CollapseClick.h"
 
-@implementation CollapseClick
+@implementation CollapseClick {
+    NSInteger _prevButtonIndex;
+}
 @synthesize CollapseClickDelegate;
 
 - (id)initWithFrame:(CGRect)frame
@@ -16,6 +18,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        _prevButtonIndex = 0;
+        self.collapseOthers = NO;
+
         self.isClickedArray = [[NSMutableArray alloc] initWithCapacity:[CollapseClickDelegate numberOfCellsForCollapseClick]];
         self.dataArray = [[NSMutableArray alloc] initWithCapacity:[CollapseClickDelegate numberOfCellsForCollapseClick]];
         [self reloadCollapseClick];
@@ -123,7 +128,15 @@
 #pragma mark - Did Click
 -(void)didSelectCollapseClickButton:(UIButton *)titleButton {
     BOOL isOpen = NO;
-    
+
+    if (self.collapseOthers) {
+        NSInteger buttonIndex = titleButton.tag;
+        if (buttonIndex != _prevButtonIndex) {
+            [self closeCollapseClickCellAtIndex:_prevButtonIndex animated:YES];
+            _prevButtonIndex = buttonIndex;
+        }
+    }
+
     // Cell is OPEN -> CLOSED
     if ([[self.isClickedArray objectAtIndex:titleButton.tag] boolValue] == YES) {
         [self closeCollapseClickCellAtIndex:titleButton.tag animated:YES];
