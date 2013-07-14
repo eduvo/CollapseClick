@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CollapseClickCell.h"
 
-#define kCCPad 10
+#define kCCPad 0
 
   //////////////
  // Delegate //
