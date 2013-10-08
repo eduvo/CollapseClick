@@ -6,7 +6,8 @@ Pod::Spec.new do |s|
     'Ben Gordon' => 'brgordon@ua.edu'
   }
   s.source = {
-    :path => '.'
+    :git => 'https://github.com/eduvo/CollapseClick.git',
+    :tag => 'v1.0.1'
   }
   s.homepage     = 'http://subvertapps.com'
   s.license      = 'LICENSE'
